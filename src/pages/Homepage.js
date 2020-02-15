@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Div100vh from "react-div-100vh";
 
 import Moon from "../components/Moon";
 
-const Grid = styled.div`
+const Grid = styled(Div100vh)`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-template-areas: "logo logo . . infos infos" "logo logo moon moon . ." ". . moon moon . ." "residences residences . . programmation programmation";
-  height: 100vh;
 `;
 const LogoArea = styled.div`
   grid-area: logo;
