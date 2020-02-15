@@ -46,7 +46,7 @@ const LogoDark = styled.img`
 const TitleDark = styled.div`
   font-size: 30px;
   font-weight: bold;
-  letter-spacing: 8px;
+  letter-spacing: 1px;
   transform: rotate(90deg);
 `;
 

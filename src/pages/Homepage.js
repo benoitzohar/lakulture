@@ -58,7 +58,7 @@ const Logo = styled.img`
 const StyledLink = styled(Link)`
   font-size: 20px;
   font-weight: bold;
-  letter-spacing: 6px;
+  letter-spacing: 1px;
 `;
 
 function Homepage() {
