@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Div100vh from "react-div-100vh";
 
+import Background from "../components/Background";
 import Moon from "../components/Moon";
+import LogoSVG from "../assets/logo.svg";
 
 const Grid = styled(Div100vh)`
   display: grid;
@@ -13,6 +15,11 @@ const Grid = styled(Div100vh)`
 `;
 const LogoArea = styled.div`
   grid-area: logo;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 20px;
 `;
 const MoonArea = styled.div`
   grid-area: moon;
@@ -42,29 +49,41 @@ const ResidencesArea = styled.div`
   padding: 20px;
 `;
 
+const Logo = styled.img`
+  width: 100%;
+  max-width: 250px;
+  filter: invert();
+`;
+
+const StyledLink = styled(Link)`
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 6px;
+`;
+
 function Homepage() {
   return (
-    <div className="bg-dark">
+    <Background>
       <Grid>
         <LogoArea>
-          Insert logo
+          <Logo src={LogoSVG} alt="La Kulture" />
           <br />
-          <Link to="/club">CLUB</Link>
+          <StyledLink to="/club">CLUB</StyledLink>
         </LogoArea>
         <MoonArea>
           <Moon />
         </MoonArea>
         <InfosArea>
-          <Link to="/infos">INFOS</Link>
+          <StyledLink to="/infos">INFOS</StyledLink>
         </InfosArea>
         <ProgrammationArea>
-          <Link to="/programmation">PROGRAMMATION</Link>
+          <StyledLink to="/programmation">PROGRAMMATION</StyledLink>
         </ProgrammationArea>
         <ResidencesArea>
-          <Link to="/residences">RÉSIDENCES</Link>
+          <StyledLink to="/residences">RÉSIDENCES</StyledLink>
         </ResidencesArea>
       </Grid>
-    </div>
+    </Background>
   );
 }
 

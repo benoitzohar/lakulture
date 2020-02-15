@@ -2,12 +2,27 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const Button = styled(Link)`
-  color: red;
+import CrossSVG from "../assets/cross.svg";
+
+let IconDark = styled.img`
+  height: 30px;
+  width: 30px;
+  margin: 10px;
 `;
 
-function CloseButton() {
-  return <Button to="/">Back to home</Button>;
+function CloseButton({ light }) {
+  let Icon = IconDark;
+  if (!light) {
+    Icon = styled(IconDark)`
+      filter: invert();
+    `;
+  }
+
+  return (
+    <Link to="/">
+      <Icon src={CrossSVG} alt="Retour" />
+    </Link>
+  );
 }
 
 export default CloseButton;

@@ -15,9 +15,3 @@ a:active {
   color: white;
   text-decoration: none;
 }
-
-.bg-dark {
-  /*background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAIElEQVQoU2NkIAL8////PyMR6hhGFeINJXDwgAhiwhIAtlQn46SRZJsAAAAASUVORK5CYII=)
-    repeat;*/
-  background-color: black;
-}

@@ -1,14 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 
-import CloseButton from "../components/CloseButton";
+import Background from "../components/Background";
+import Layout from "../components/Layout";
 
 function Programmation() {
   return (
-    <div>
-      <CloseButton />
-      Programmation
-    </div>
+    <Background>
+      <Layout title="PROGRAMMATION">
+        <div>
+          <p>Programmation</p>
+        </div>
+      </Layout>
+    </Background>
   );
 }
 

@@ -1,14 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 
-import CloseButton from "../components/CloseButton";
+import Background from "../components/Background";
+import Layout from "../components/Layout";
 
 function Infos() {
   return (
-    <div>
-      <CloseButton />
-      Infos
-    </div>
+    <Background>
+      <Layout title="INFOS">
+        <div>
+          <p>Infos</p>
+        </div>
+      </Layout>
+    </Background>
   );
 }
 
