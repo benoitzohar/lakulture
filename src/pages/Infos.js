@@ -62,7 +62,10 @@ function Infos() {
               <a href="https://facebook.com/lakulture" rel="nofollow">
                 <SocialIcon src={FacebookSVG} alt="Facebook" />
               </a>
-              <a href="https://instagram.com/la_kulture" rel="nofollow">
+              <a
+                href="https://instagram.com/lakulturestrasbourg"
+                rel="nofollow"
+              >
                 <SocialIcon src={InstagramSVG} alt="Instagram" />
               </a>
             </div>
