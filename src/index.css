@@ -1,9 +1,17 @@
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
 body {
+  height: 100%;
   margin: 0;
   font-family: Lato, "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
 }
 
 code {
