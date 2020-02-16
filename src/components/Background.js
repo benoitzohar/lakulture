@@ -19,9 +19,9 @@ const LightBackground = styled.div`
   background-size: 50px 50px;
 `;
 
-function Background({ light, children }) {
+function Background({ light, children, style = {} }) {
   const Bg = light ? LightBackground : DarkBackground;
-  return <Bg>{children}</Bg>;
+  return <Bg style={style}>{children}</Bg>;
 }
 
 export default Background;

@@ -29,7 +29,6 @@ const DarkMoon = styled.div`
   position: absolute;
   left: 0;
   top: 0;
-
   animation: passBy 3s linear infinite;
 
   @keyframes passBy {

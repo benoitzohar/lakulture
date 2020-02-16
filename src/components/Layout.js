@@ -4,7 +4,7 @@ import Div100vh from "react-div-100vh";
 
 import CloseButton from "./CloseButton";
 
-import LogoSVG from "../assets/logo.svg";
+import LogoSVG from "../assets/logo-small.svg";
 
 const Grid = styled(Div100vh)`
   display: grid;

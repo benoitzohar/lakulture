@@ -4,8 +4,9 @@ import styled from "styled-components";
 import Div100vh from "react-div-100vh";
 
 import Background from "../components/Background";
+import ComingSoon from "../components/ComingSoon";
 import Moon from "../components/Moon";
-import LogoSVG from "../assets/logo.svg";
+import LogoSVG from "../assets/logo-simple.svg";
 
 const Grid = styled(Div100vh)`
   display: grid;
@@ -52,38 +53,43 @@ const ResidencesArea = styled.div`
 const Logo = styled.img`
   width: 100%;
   max-width: 250px;
-  filter: invert();
 `;
 
 const StyledLink = styled(Link)`
-  font-size: 20px;
+  font-size: 30px;
   font-weight: bold;
   letter-spacing: 1px;
 `;
 
+const SHOW_COMING_SOON_OVERLAY =
+  !localStorage || !localStorage.getItem("HIDE_COMING_SOON_OVERLAY");
+
 function Homepage() {
   return (
-    <Background>
-      <Grid>
-        <LogoArea>
-          <Logo src={LogoSVG} alt="La Kulture" />
-          <br />
-          <StyledLink to="/club">CLUB</StyledLink>
-        </LogoArea>
-        <MoonArea>
-          <Moon />
-        </MoonArea>
-        <InfosArea>
-          <StyledLink to="/infos">INFOS</StyledLink>
-        </InfosArea>
-        <ProgrammationArea>
-          <StyledLink to="/programmation">PROGRAMMATION</StyledLink>
-        </ProgrammationArea>
-        <ResidencesArea>
-          <StyledLink to="/residences">RÉSIDENCES</StyledLink>
-        </ResidencesArea>
-      </Grid>
-    </Background>
+    <>
+      <Background>
+        <Grid>
+          <LogoArea>
+            <Logo src={LogoSVG} alt="La Kulture" />
+            <br />
+            <StyledLink to="/club">CLUB</StyledLink>
+          </LogoArea>
+          <MoonArea>
+            <Moon />
+          </MoonArea>
+          <InfosArea>
+            <StyledLink to="/infos">INFOS</StyledLink>
+          </InfosArea>
+          <ProgrammationArea>
+            <StyledLink to="/programmation">PROGRAMMATION</StyledLink>
+          </ProgrammationArea>
+          <ResidencesArea>
+            <StyledLink to="/residences">RÉSIDENCES</StyledLink>
+          </ResidencesArea>
+        </Grid>
+      </Background>
+      {SHOW_COMING_SOON_OVERLAY && <ComingSoon />}
+    </>
   );
 }
 
