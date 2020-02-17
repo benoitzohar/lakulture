@@ -12,26 +12,26 @@ const Container = styled.div`
 `;
 
 const Header = styled.h1`
-  font-size: 40px;
+  font-size: 70px;
 `;
 
 const Title = styled.div`
-  font-size: 30px;
-  font-weight: bold;
+  font-size: 40px;
 `;
 
 const Subtitle = styled.div`
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: 30px;
+  margin-bottom: 40px;
+  font-weight: 700;
 `;
 
 const Delimiter = styled.img`
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   height: 12px;
 `;
 
 const Logo = styled.img`
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   height: 140px;
 `;
 

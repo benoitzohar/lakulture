@@ -57,8 +57,6 @@ const Logo = styled.img`
 
 const StyledLink = styled(Link)`
   font-size: 30px;
-  font-weight: bold;
-  letter-spacing: 1px;
 `;
 
 const SHOW_COMING_SOON_OVERLAY =

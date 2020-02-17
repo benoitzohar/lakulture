@@ -11,7 +11,6 @@ const Container = styled.div`
   margin-right: auto;
   width: 80%;
   text-align: center;
-  font-weight: bold;
 `;
 
 const FirstParagraph = styled.p`
