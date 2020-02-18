@@ -31,8 +31,8 @@ function Club() {
       <Layout title="CLUB" light>
         <Container>
           <FirstParagraph>
-            LA KULTURE EST UNE TERRE D’ACCUEIL POUR LES AMOUREUX DE MUSIQUE
-            SÉLECTRONIQUES.
+            LA KULTURE EST UNE TERRE D’ACCUEIL POUR LES AMOUREUX DE MUSIQUES
+            ÉLECTRONIQUES.
           </FirstParagraph>
           <OtherParagraph>
             LIEU DE RENCONTRES ET DE CULTURE ALTERNATIVE, ON Y PARTAGE TOUTES
