@@ -7,7 +7,6 @@ import CrossSVG from "../assets/cross.svg";
 let IconDark = styled.img`
   height: 30px;
   width: 30px;
-  margin: 10px;
 `;
 
 function CloseButton({ light }) {

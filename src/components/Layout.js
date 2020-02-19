@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Div100vh from "react-div-100vh";
+import { Link } from "react-router-dom";
 
 import CloseButton from "./CloseButton";
 
@@ -8,20 +9,23 @@ import LogoSVG from "../assets/logo-small.svg";
 
 const Grid = styled(Div100vh)`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: auto 1fr 1fr 1fr 1fr auto;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas: "small_logo . . . . close" "title content content content content ." "title content content content content ." "title content content content content ." "title content content content content ." "title content content content content .";
 `;
 
 const LogoArea = styled.div`
   grid-area: small_logo;
+  padding-top: 20px;
+  padding-left: 20px;
 `;
 const CloseArea = styled.div`
   grid-area: close;
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;
-  padding: 20px;
+  padding-top: 20px;
+  padding-right: 20px;
 `;
 const TitleArea = styled.div`
   grid-area: title;
@@ -39,8 +43,7 @@ const ContentAreaDark = styled.div`
 `;
 
 const LogoDark = styled.img`
-  height: 50px;
-  margin: 20px;
+  height: 34px;
   filter: invert();
 `;
 const TitleDark = styled.div`
@@ -68,7 +71,9 @@ function Background({ light, title, children }) {
   return (
     <Grid>
       <LogoArea>
-        <Logo src={LogoSVG} alt="La Kulture" />
+        <Link to="/">
+          <Logo src={LogoSVG} alt="La Kulture" />
+        </Link>
       </LogoArea>
       <CloseArea>
         <CloseButton light={!!light} />
