@@ -6,7 +6,7 @@ import "./SwitchWithSlide.css";
 
 // Copied from / Inspired by https://medium.com/onfido-tech/animations-with-react-router-8e97222e25e1
 
-class Slider extends React.Component {
+export class Slider extends React.Component {
   constructor(props) {
     super(props);
 
@@ -99,14 +99,26 @@ class Slider extends React.Component {
       <div
         ref={node => (this.node = node)}
         className={classNames("animatable", {
-          to: [Slider.TO_LEFT, Slider.TO_RIGHT].includes(this.state.position),
-          from: [Slider.FROM_LEFT, Slider.FROM_RIGHT].includes(
-            this.state.position
-          ),
+          to: [
+            Slider.TO_LEFT,
+            Slider.TO_RIGHT,
+            Slider.TO_TOP,
+            Slider.TO_BOTTOM
+          ].includes(this.state.position),
+          from: [
+            Slider.FROM_LEFT,
+            Slider.FROM_RIGHT,
+            Slider.FROM_TOP,
+            Slider.FROM_BOTTOM
+          ].includes(this.state.position),
           right: [Slider.TO_RIGHT, Slider.FROM_RIGHT].includes(
             this.state.position
           ),
+          top: [Slider.TO_TOP, Slider.FROM_TOP].includes(this.state.position),
           left: [Slider.TO_LEFT, Slider.FROM_LEFT].includes(
+            this.state.position
+          ),
+          bottom: [Slider.TO_BOTTOM, Slider.FROM_BOTTOM].includes(
             this.state.position
           ),
           prepare: this.state.animatePrepare
@@ -123,9 +135,13 @@ class Slider extends React.Component {
 
 Slider.CENTER = "CENTER";
 Slider.TO_LEFT = "TO_LEFT";
+Slider.TO_TOP = "TO_TOP";
 Slider.TO_RIGHT = "TO_RIGHT";
+Slider.TO_BOTTOM = "TO_BOTTOM";
 Slider.FROM_LEFT = "FROM_LEFT";
+Slider.FROM_TOP = "FROM_TOP";
 Slider.FROM_RIGHT = "FROM_RIGHT";
+Slider.FROM_BOTTOM = "FROM_BOTTOM";
 
 class SlideOut extends Component {
   constructor(props) {
@@ -141,13 +157,17 @@ class SlideOut extends Component {
     };
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     const prevUniqId = prevProps.uniqKey || prevProps.children.type;
     const uniqId = this.props.uniqKey || this.props.children.type;
 
     if (prevUniqId !== uniqId) {
       this.setState({
-        childPosition: Slider.TO_LEFT,
+        childPosition: this.getPositionFromKeyAndPrevious(
+          uniqId,
+          prevUniqId,
+          false
+        ),
         curChild: this.props.children,
         curUniqId: uniqId,
         prevChild: prevProps.children,
@@ -157,9 +177,44 @@ class SlideOut extends Component {
     }
   }
 
+  getPositionFromKeyAndPrevious(key, prevKey, isCallback) {
+    const fromRight = !isCallback ? Slider.TO_LEFT : Slider.FROM_RIGHT;
+    const fromTop = !isCallback ? Slider.TO_BOTTOM : Slider.FROM_TOP;
+    const fromLeft = !isCallback ? Slider.TO_RIGHT : Slider.FROM_LEFT;
+    const fromBottom = !isCallback ? Slider.TO_TOP : Slider.FROM_BOTTOM;
+
+    switch (key) {
+      case "/":
+        switch (prevKey) {
+          case "/infos":
+            return fromBottom;
+          case "/club":
+            return fromRight;
+          case "/residences":
+            return fromTop;
+          case "/programmation":
+          default:
+            return fromLeft;
+        }
+      case "/infos":
+        return fromTop;
+      case "/club":
+        return fromLeft;
+      case "/residences":
+        return fromBottom;
+      case "/programmation":
+      default:
+        return fromRight;
+    }
+  }
+
   swapChildren = () => {
     this.setState({
-      childPosition: Slider.FROM_RIGHT,
+      childPosition: this.getPositionFromKeyAndPrevious(
+        this.state.curUniqId,
+        this.state.prevUniqId,
+        true
+      ),
       prevChild: null,
       prevUniqId: null,
       animationCallback: null

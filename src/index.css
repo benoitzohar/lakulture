@@ -8,6 +8,7 @@ body {
   overflow: hidden;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
+  background-color: black;
 }
 
 code {
