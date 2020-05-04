@@ -2,3 +2,4 @@
 
 # Redirect default Netlify subdomain to primary domain
 https://lakulture.netlify.com/* https://www.lakulture.com/:splat 301!
+https://lakulture.netlify.app/* https://www.lakulture.com/:splat 301!
