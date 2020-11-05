@@ -11,7 +11,7 @@ const Grid = styled(Div100vh)`
   display: grid;
   grid-template-columns: auto 1fr 1fr 1fr 1fr auto;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-areas: "small_logo . . . . close" "title content content content content ." "title content content content content ." "title content content content content ." "title content content content content ." "title content content content content .";
+  grid-template-areas: "small_logo . . . . close" "title content content content content content" "title content content content content content" "title content content content content content" "title content content content content content" "title content content content content content";
 `;
 
 const LogoArea = styled.div`

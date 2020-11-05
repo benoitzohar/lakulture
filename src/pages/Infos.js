@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { isMobileOnly } from "react-device-detect";
 
 import Background from "../components/Background";
 import Layout from "../components/Layout";
@@ -12,11 +13,13 @@ const Container = styled.div`
   display: flex;
   flex: 1;
   justify-content: space-around;
+  ${isMobileOnly ? "flex-direction: column;" : ""}
 `;
 
 const TextBlock = styled.div`
-  margin-bottom: 30px;
-  font-size: 20px;
+  margin-bottom: ${isMobileOnly ? "10" : "30"}px;
+  font-size: ${isMobileOnly ? "4vw" : "20px"};
+  ${isMobileOnly ? "letter-spacing: 0.2em;" : ""};
 `;
 
 const ImageWrapper = styled.div`
@@ -26,7 +29,7 @@ const ImageWrapper = styled.div`
 `;
 
 const Image = styled.img`
-  height: 260px;
+  height: ${isMobileOnly ? "180" : "260"}px;
 `;
 
 const SocialIcon = styled.img`
