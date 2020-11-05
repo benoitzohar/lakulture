@@ -1,7 +1,10 @@
-import React from "react";
-import { Link } from "react-router-dom";
+//@ts-check
+
+import React, { useState, useEffect } from "react";
+import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 import Div100vh from "react-div-100vh";
+import { isMobileOnly } from "react-device-detect";
 
 import Background from "../components/Background";
 import Moon from "../components/Moon";
@@ -54,6 +57,9 @@ const Logo = styled.img`
   width: 100%;
   max-width: 250px;
 `;
+const MobileLogo = styled.img`
+  width: 160px;
+`;
 
 const StyledLink = styled(Link)`
   font-size: 30px;
@@ -70,7 +76,146 @@ const ShopButtonImg = styled.img`
   right: calc(20% - 120px);
 `;
 
+const MobileMoonArea = styled(MoonArea)`
+  padding-top: 160px;
+`;
+
+const MenuButton = styled.div`
+  > span {
+    display: block;
+    width: 33px;
+    height: 4px;
+    margin-bottom: 9px;
+    position: relative;
+
+    background: white;
+
+    z-index: 1;
+
+    transform-origin: 4px 0px;
+
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+      background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+  }
+
+  > span:first-child {
+    transform-origin: 0% 0%;
+  }
+
+  > span:nth-last-child(2) {
+    transform-origin: 0% 100%;
+  }
+
+  ${({ opened }) =>
+    opened &&
+    `
+        > span {
+         opacity: 1;
+         transform: rotate(45deg) translate(-2px, 0px);
+        }
+        > span:nth-last-child(1) {
+          transform: rotate(-45deg) translate(0, -10px);
+        }
+        > span:nth-last-child(2) {
+          opacity: 0;
+          transform: rotate(0deg) scale(0.2, 0.2);
+        }
+      `}
+`;
+
+const Menu = styled.div`
+  position: absolute;
+  top: 0;
+
+  bottom: 0;
+  right: 0;
+  width: 100vw;
+  left: 100vw;
+  background: black;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  transition: all 0.4s;
+
+  ${({ displayed }) =>
+    displayed &&
+    `
+        left: 0;
+        opacity: 1;
+    `}
+`;
+
+const MenuLink = styled(Link)`
+  font-size: 22px;
+  width: 100%;
+  height: 45px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const MenuA = styled.a`
+  font-size: 22px;
+  width: 100%;
+  height: 45px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 function Homepage() {
+  const [openMenu, setOpenMenu] = useState(false);
+  const [displayMenu, setDisplayMenu] = useState(false);
+
+  useEffect(() => {
+    setDisplayMenu(openMenu);
+  }, [openMenu]);
+
+  if (isMobileOnly) {
+    return (
+      <>
+        <Background>
+          <Grid>
+            <LogoArea>
+              <MobileLogo src={LogoSVG} alt="La Kulture" />
+              <br />
+            </LogoArea>
+            <MobileMoonArea>
+              <Moon />
+            </MobileMoonArea>
+            <InfosArea>
+              <MenuButton
+                onClick={() => setOpenMenu(!openMenu)}
+                opened={openMenu}
+              >
+                <span />
+                <span />
+                <span />
+              </MenuButton>
+            </InfosArea>
+            <Menu displayed={displayMenu}>
+              <MenuA href="https://sauvez.lakulture.com">SHOP</MenuA>
+              <MenuLink to="/club">CLUB</MenuLink>
+              <MenuLink to="/infos">INFOS</MenuLink>
+              <MenuA
+                href="https://www.facebook.com/lakulture/events/?ref=page_internal"
+                target="_blank"
+              >
+                PROGRAMMATION
+              </MenuA>
+              <MenuLink to="/residences">RÉSIDENCES</MenuLink>
+            </Menu>
+          </Grid>
+        </Background>
+      </>
+    );
+  }
+
   return (
     <>
       <Background>
@@ -106,4 +251,4 @@ function Homepage() {
   );
 }
 
-export default Homepage;
+export default withRouter(Homepage);
