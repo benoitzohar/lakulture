@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { isMobileOnly } from "react-device-detect";
 
 import Background from "../components/Background";
 import Layout from "../components/Layout";
@@ -12,16 +13,16 @@ const Container = styled.div`
 `;
 
 const Header = styled.h1`
-  font-size: 70px;
+  font-size: ${isMobileOnly ? "24" : "70"}px;
 `;
 
 const Title = styled.div`
-  font-size: 40px;
+  font-size: ${isMobileOnly ? "20" : "40"}px;
 `;
 
 const Subtitle = styled.div`
-  font-size: 30px;
-  margin-bottom: 40px;
+  font-size: ${isMobileOnly ? "18" : "30"}px;
+  margin-bottom: ${isMobileOnly ? "20" : "40"}px;
   font-weight: 700;
 `;
 

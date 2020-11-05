@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { isMobileOnly } from "react-device-detect";
 
 import Background from "../components/Background";
 import Layout from "../components/Layout";
@@ -14,10 +15,10 @@ const Container = styled.div`
 `;
 
 const FirstParagraph = styled.p`
-  font-size: 40px;
+  font-size: ${isMobileOnly ? "20" : "40"}px;
 `;
 const OtherParagraph = styled.p`
-  font-size: 30px;
+  font-size: ${isMobileOnly ? "16" : "30"}px;
 `;
 
 const Logo = styled.img`

@@ -10,6 +10,8 @@ const DarkBackground = styled.div`
     linear-gradient(90deg, rgba(255, 255, 255, 0.3), white 1px, transparent 1px);
   background-size: 50px 50px;
   background-position: -2px -2px;
+  position: relative;
+  overflow: hidden;
 `;
 
 const LightBackground = styled.div`
