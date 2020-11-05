@@ -4,9 +4,9 @@ import styled from "styled-components";
 import Div100vh from "react-div-100vh";
 
 import Background from "../components/Background";
-import ComingSoon from "../components/ComingSoon";
 import Moon from "../components/Moon";
 import LogoSVG from "../assets/logo-simple.svg";
+import shopButtonSVG from "../assets/shop-button.svg";
 
 const Grid = styled(Div100vh)`
   display: grid;
@@ -59,8 +59,16 @@ const StyledLink = styled(Link)`
   font-size: 30px;
 `;
 
-const SHOW_COMING_SOON_OVERLAY =
-  !localStorage || !localStorage.getItem("HIDE_COMING_SOON_OVERLAY");
+const StyledA = styled.a`
+  font-size: 30px;
+`;
+
+const ShopButtonImg = styled.img`
+  height: 240px;
+  position: absolute;
+  top: calc(50% - 120px);
+  right: calc(20% - 120px);
+`;
 
 function Homepage() {
   return (
@@ -74,19 +82,26 @@ function Homepage() {
           </LogoArea>
           <MoonArea>
             <Moon />
+            <StyledA href="https://sauvez.lakulture.com">
+              <ShopButtonImg src={shopButtonSVG} alt="Got to Shop" />
+            </StyledA>
           </MoonArea>
           <InfosArea>
             <StyledLink to="/infos">INFOS</StyledLink>
           </InfosArea>
           <ProgrammationArea>
-            <StyledLink to="/programmation">PROGRAMMATION</StyledLink>
+            <StyledA
+              href="https://www.facebook.com/lakulture/events/?ref=page_internal"
+              target="_blank"
+            >
+              PROGRAMMATION
+            </StyledA>
           </ProgrammationArea>
           <ResidencesArea>
             <StyledLink to="/residences">RÉSIDENCES</StyledLink>
           </ResidencesArea>
         </Grid>
       </Background>
-      {SHOW_COMING_SOON_OVERLAY && <ComingSoon />}
     </>
   );
 }
